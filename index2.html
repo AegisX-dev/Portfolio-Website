@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AegisX-Dev - Home</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Maven+Pro:500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+        }
+
+        #home {
+            height: 100vh;
+            background: linear-gradient(135deg, black, white);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar {
+            width: 100%;
+            height: 130px;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
+        .top-nav {
+            top: 0;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 80px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            top: 40px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+        }
+
+        .borderYtoX a:before, 
+        .borderYtoX a:after {
+            position: absolute;
+            opacity: 0;
+            height: 20px;
+            width: 2px;
+            content: '';
+            background: #FFF;
+            transition: all 0.3s ease;
+        }
+
+        .borderYtoX a:before {
+            left: 50%;
+            top: -10px;
+            transform: translateX(-50%);
+        }
+
+        .borderYtoX a:after {
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+        }
+
+        .borderYtoX a:hover:before {
+            opacity: 1;
+            height: 2px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            transform: translateX(0);
+        }
+
+        .borderYtoX a:hover:after {
+            opacity: 1;
+            height: 2px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            transform: translateX(0);
+        }
+
+        .logo {
+            color: black;
+            font-size: 48px;
+            font-weight: bold;
+            position: absolute;
+            top: 13px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background: linear-gradient(90deg, #fff, #aaa, #fff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .summary {
+            color: #333;
+            font-size: 20px;
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        .waves {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45vh;
+            margin-bottom: 0;
+            min-height: 300px;
+            max-height: 450px;
+            z-index: 1;
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+
+        .parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+
+        .parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+
+        .parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+
+        .parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
+
+        .social-media-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-media-links a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-media-links a:hover {
+            color: #aaa;
+        }
+
+        .copyright {
+            margin: 0;
+        }
+
+        .copyright p {
+            color: white;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        #about-me {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #2b5876, #4e4376);
+            background-size: 400% 400%;
+            animation: aboutGradient 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        @keyframes aboutGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .about-container {
+            max-width: 900px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-content {
+            max-width: 500px;
+        }
+
+        .about-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #fff, #aaa, #fff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        #projects {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a3c34, #2e856e);
+            background-size: 400% 400%;
+            animation: projectsGradient 12s ease infinite;
+            min-height: 100vh;
+            color: white;
+        }
+
+        @keyframes projectsGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .projects-container h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, #fff, #aaa, #fff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-card p {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        #contacts {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #5f2c82, #49a09d);
+            background-size: 400% 400%;
+            animation: contactsGradient 14s ease infinite;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes contactsGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .contacts-container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contacts-container h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #fff, #aaa, #fff);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-family: monospace;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+
+        .contact-form button:hover {
+            background: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .waves {
+                height: 120px;
+                min-height: 120px;
+                bottom: 0;
+            }
+            .logo {
+                font-size: 36px;
+                top: 5px;
+            }
+            .summary {
+                font-size: 16px;
+                top: 120px;
+                max-width: 90%;
+            }
+            .bottom-nav {
+                height: 60px;
+            }
+            .social-media-links a {
+                font-size: 16px;
+            }
+            .copyright p {
+                font-size: 12px;
+            }
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image img {
+                width: 200px;
+                height: 200px;
+            }
+            .about-content {
+                max-width: 100%;
+            }
+            .about-content h2 {
+                font-size: 28px;
+            }
+            .about-content p {
+                font-size: 16px;
+            }
+            .projects-container h2 {
+                font-size: 28px;
+            }
+            .project-card h3 {
+                font-size: 20px;
+            }
+            .project-card p {
+                font-size: 14px;
+            }
+            .contacts-container h2 {
+                font-size: 28px;
+            }
+            .contact-form input,
+            .contact-form textarea,
+            .contact-form button {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="home">
+        <span class="logo">AegisX-Dev</span>
+        <div class="navbar top-nav borderYtoX">
+            <a href="#home" class="nav-link">HOME</a>
+            <a href="#about-me" class="nav-link">ABOUT ME</a>
+            <a href="#projects" class="nav-link">PROJECTS</a>
+            <a href="#contacts" class="nav-link">CONTACTS</a>
+        </div>
+        <p class="summary">As a passionate Front-End Developer, I specialize in crafting responsive, user-friendly web interfaces using HTML, CSS, and JavaScript. My work focuses on delivering seamless experiences with modern design and smooth functionality.</p>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </section>
+
+    <section id="about-me">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="photo_6057603943246185292_y.jpg" alt="Profile Picture">
+            </div>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>Hi, I'm AegisX-Dev, a dedicated Front-End Developer with a passion for creating beautiful and functional web experiences. With several years of experience in HTML, CSS, and JavaScript, I specialize in building responsive websites that prioritize user experience. I love tackling complex challenges and turning ideas into reality through clean, efficient code. When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee while sketching new design ideas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="projects-container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Project 1">
+                    <h3>Project One</h3>
+                    <p>A responsive web application built with HTML, CSS, and JavaScript, featuring dynamic content and smooth animations.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Project 2">
+                    <h3>Project Two</h3>
+                    <p>An interactive portfolio site showcasing modern design trends and efficient front-end development techniques.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Project 3">
+                    <h3>Project Three</h3>
+                    <p>A task management tool with a clean UI, built to enhance productivity using vanilla JavaScript and CSS Grid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <div class="contacts-container">
+            <h2>Contact Me</h2>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="navbar bottom-nav borderYtoX">
+        <div class="social-media-links">
+            <ul>
+                <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer"><i class="far fa-envelope"></i></a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p>© 2023 AegisX-Dev. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
